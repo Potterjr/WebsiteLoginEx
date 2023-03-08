@@ -16,12 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo json_encode(array("status" => "error", "message" => "Invalid password"));
         }
-        
+    }
         // login
         if (isset($_POST['username']) && isset($_POST['pwd'])) {
             $result = $data->login($_POST['username'], $_POST['pwd']);
             if (isset($result['status']) && $result['status'] === 'error') {
-                http_response_code(400);
                 echo json_encode($result);
             } else {
                 $user_data = $result[0];
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['role'] = $user_data['role'];
             }
         }
-    }
+    
 }
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     echo json_encode($data->show());
