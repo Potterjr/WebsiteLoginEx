@@ -37,10 +37,10 @@
                 <div class="row-auto">
                     <button type="submit" name="formreg_submit" class="btn btn-primary">Submit</button>
                     <button type="reset" class="btn btn-danger">reset</button>
-                    <button type="submit" class="btn btn-success"><a href="index.html">login</a></button>
                 </div>
             </div>
         </form>
+        <button type="submit" class="btn btn-success"><a href="index.html">login</a></button>
     </center>
 </body>
 
@@ -58,7 +58,7 @@
             body: formdata,
         })
             .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((data) => window.alert(data['message']))
             .catch((error) => console.log(error));
     }
 </script>

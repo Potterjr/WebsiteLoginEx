@@ -45,7 +45,6 @@ class database
             $stmt->execute();
             if ($stmt->rowCount() > 0) {
                 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                
                 return $rows;
                 
             } 
