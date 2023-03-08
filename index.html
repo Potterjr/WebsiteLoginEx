@@ -57,6 +57,9 @@
                 else if(data && data.role === 'user'){
                     window.location.href = 'user.php';
                 }
+                else{
+                    window.location.href = 'index.html';
+                }
             })
             .catch((error) => console.log(error)
             );

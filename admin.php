@@ -1,6 +1,19 @@
 <?php
-include_once('session.php');
+session_start();
+error_reporting(0);
+
+if($_SESSION['role']==="admin"){
+    echo"session id :". $_SESSION["id"]."<br>";
+    echo "session role :". $_SESSION["role"]."<br>"; 
+}
+else if($_SESSION['role']==="user"){
+    header('location:user.php');
+}
+else if($_SESSION['role']!="admin"||$_SESSION['role']!="user"){
+    header('location:logout.php');
+}
 ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -59,8 +72,8 @@ include_once('session.php');
         const row = btn.parentNode.parentNode;
         const cells = row.getElementsByTagName("td");
        
-        cells[0].innerHTML = "<input type='text' value='" +cells[0].innerHTML + "'>";
-        cells[1].innerHTML = "<input type='text' value='" +cells[1].innerHTML + "'>";
+        cells[0].innerHTML = "<input type='text' value='" +cells[0].innerHTML + "'readonly>";
+        cells[1].innerHTML = "<input type='password' value='" +cells[1].innerHTML + "'>";
         cells[2].innerHTML = "<select> <option value='admin'>admin</option><option value='user'>user</option> </select>";
         cells[3].innerHTML = "<button onclick='saveRow(this)'>Save</button>";
     }
